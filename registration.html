@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Registration Form</title>
+
+<style type="text/css">
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='submit'],
+input[type='reset'] {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type='submit'],
+input[type='reset'] {
+    background-color: green;
+    color: white;
+    font-size: 14pt;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Registration Form</h1>
+<hr>
+
+<form method="post" action="registration.php">
+
+Full Name: <input type="text" name="fn">
+
+Age: <input type="number" name="age">
+
+Sex:
+<input type="radio" name="s" value="Male"> Male
+<input type="radio" name="s" value="Female"> Female
+<br>
+
+Address: <input type="text" name="addr">
+
+Phone Number: <input type="number" name="ph">
+
+Email: <input type="email" name="em">
+
+<input type="submit" name="btnR" value="Register">
+<input type="reset" name="reset" value="Clear">
+
+</form>
+
+</body>
+</html>
