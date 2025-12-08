@@ -1,54 +1,143 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Registration Form</title>
+    <meta charset="utf-8">
+    <title>Registration Page</title>
 
-<style type="text/css">
-input[type='text'],
-input[type='number'],
-input[type='email'],
-input[type='submit'],
-input[type='reset'] {
-    display: block;
-    margin-bottom: 10px;
-}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-input[type='submit'],
-input[type='reset'] {
-    background-color: green;
-    color: white;
-    font-size: 14pt;
-}
-</style>
+        .container {
+            width: 380px;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        }
 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="radio"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .radio-group {
+            margin: 10px 0 15px 0;
+        }
+
+        .radio-group label {
+            margin-right: 15px;
+            font-weight: normal;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background: #dc3545;
+            color: white;
+        }
+
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+
+        input[type="reset"]:hover {
+            background: #c82333;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
+    
+    <div class="container">
+        <h2>Registration Form</h2>
 
-<h1>Registration Form</h1>
-<hr>
+        <form method="post" action="registration.php">
+            
+            <label>Full Name</label>
+            <input type="text" name="fn" required>
 
-<form method="post" action="registration.php">
+            <label>Age</label>
+            <input type="number" name="age" required>
 
-Full Name: <input type="text" name="fn">
+            <label>Sex</label>
+            <div class="radio-group">
+                <label><input type="radio" name="s" value="Male" required> Male</label>
+                <label><input type="radio" name="s" value="Female"> Female</label>
+            </div>
 
-Age: <input type="number" name="age">
+            <label>Address</label>
+            <input type="text" name="addr" required>
 
-Sex:
-<input type="radio" name="s" value="Male"> Male
-<input type="radio" name="s" value="Female"> Female
-<br>
+            <label>Phone Number</label>
+            <input type="number" name="ph" required>
 
-Address: <input type="text" name="addr">
+            <label>Email</label>
+            <input type="email" name="em" required>
 
-Phone Number: <input type="number" name="ph">
+            <input type="submit" name="btnR" value="Register">
+            <input type="reset" value="Clear">
 
-Email: <input type="email" name="em">
+            <div class="login-link">
+                Already registered? <a href="login.php">Login here</a>
+            </div>
 
-<input type="submit" name="btnR" value="Register">
-<input type="reset" name="reset" value="Clear">
-
-</form>
+        </form>
+    </div>
 
 </body>
 </html>
