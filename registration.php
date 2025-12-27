@@ -1,7 +1,35 @@
 <?php
 include('connect.php');
 
-mysqli_select_db($con, "SE_G3_A");
+// Ensure database exists and select it. If missing, try to create it.
+$dbName = 'SE_G3_A';
+if (!mysqli_select_db($con, $dbName)) {
+    $createDbSql = "CREATE DATABASE IF NOT EXISTS `{$dbName}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
+    if (!mysqli_query($con, $createDbSql)) {
+        die('Unable to create database: ' . htmlspecialchars(mysqli_error($con)));
+    }
+    if (!mysqli_select_db($con, $dbName)) {
+        die('Unable to select database after creation: ' . htmlspecialchars(mysqli_error($con)));
+    }
+}
+
+mysqli_set_charset($con, 'utf8mb4');
+
+// Ensure members table exists
+$createTable = "CREATE TABLE IF NOT EXISTS `members` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Role` VARCHAR(64) DEFAULT NULL,
+  `Full_Name` VARCHAR(255) NOT NULL,
+  `Age` INT DEFAULT NULL,
+  `Sex` VARCHAR(16) DEFAULT NULL,
+  `Address` TEXT,
+  `Phone_No` VARCHAR(32),
+  `Email` VARCHAR(255),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci";
+if (!mysqli_query($con, $createTable)) {
+    die('Unable to ensure members table exists: ' . htmlspecialchars(mysqli_error($con)));
+}
 
 if (isset($_POST['btnR'])) {
 
