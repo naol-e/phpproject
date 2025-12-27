@@ -3,13 +3,24 @@ include('connect.php');
 
 // Ensure database exists and select it. If missing, try to create it.
 $dbName = 'SE_G3_A';
-if (!mysqli_select_db($con, $dbName)) {
+$selected = false;
+try {
+    $selected = mysqli_select_db($con, $dbName);
+} catch (Throwable $e) {
+    $selected = false;
+}
+
+if (!$selected) {
     $createDbSql = "CREATE DATABASE IF NOT EXISTS `{$dbName}` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
     if (!mysqli_query($con, $createDbSql)) {
         die('Unable to create database: ' . htmlspecialchars(mysqli_error($con)));
     }
-    if (!mysqli_select_db($con, $dbName)) {
-        die('Unable to select database after creation: ' . htmlspecialchars(mysqli_error($con)));
+    try {
+        if (!mysqli_select_db($con, $dbName)) {
+            die('Unable to select database after creation: ' . htmlspecialchars(mysqli_error($con)));
+        }
+    } catch (Throwable $e) {
+        die('Unable to select database after creation: ' . htmlspecialchars($e->getMessage()));
     }
 }
 
