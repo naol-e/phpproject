@@ -4,12 +4,23 @@
     <meta charset="utf-8">
     <title>Registration Page</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        :root{
+            --bg1: #f6f8fa;
+            --accent: #6c63ff;
+            --muted: #6b7280;
+            --white: #ffffff;
+        }
+
+        *{box-sizing: border-box}
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f0f2f5;
+            font-family: 'Poppins', Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #e9eefc 0%, #f7f7fb 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,87 +28,74 @@
         }
 
         .container {
-            width: 380px;
-            background: #ffffff;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+            width: 420px;
+            background: var(--white);
+            padding: 28px 36px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(99,102,241,0.12);
+            border: 1px solid rgba(99,102,241,0.06);
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+            margin-bottom: 18px;
+            color: #1f2937;
         }
 
+        .sub {text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px}
+
         label {
-            font-weight: bold;
-            color: #555;
+            display:block;
+            font-weight:600;
+            color: var(--muted);
+            margin-bottom:6px;
+            font-size:13px;
+        }
+
+        .field {position:relative;margin-bottom:14px}
+
+        .field .icon{
+            position:absolute;left:10px;top:50%;transform:translateY(-50%);
+            color: #9ca3af;font-size:14px;pointer-events:none;
         }
 
         input[type="text"],
         input[type="number"],
         input[type="email"],
-        input[type="radio"] {
+        input[type="tel"] {
             width: 100%;
-            padding: 10px;
-            margin: 8px 0 15px 0;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
-
-        .radio-group {
-            margin: 10px 0 15px 0;
-        }
-
-        .radio-group label {
-            margin-right: 15px;
-            font-weight: normal;
-        }
-
-        input[type="submit"],
-        input[type="reset"] {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
+            padding: 10px 12px 10px 38px;
+            margin: 0;
             border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 10px;
+            border: 1px solid #e6e9ef;
+            font-size: 14px;
+            color: #111827;
+            background: #fbfdff;
+            transition: box-shadow .15s, border-color .15s;
         }
 
-        input[type="submit"] {
-            background: #28a745;
-            color: white;
+        input:focus{outline:none;border-color:var(--accent);box-shadow:0 4px 14px rgba(108,99,255,0.12)}
+
+        .radio-group {display:flex;gap:12px;align-items:center;margin:6px 0 12px 0}
+
+        .radio-group label {margin:0;font-weight:500;color:var(--muted)}
+
+        .actions {display:flex;gap:10px;margin-top:8px}
+
+        .btn {
+            flex:1;padding:12px;border-radius:10px;border:0;color:white;font-weight:600;cursor:pointer;font-size:15px
         }
 
-        input[type="reset"] {
-            background: #dc3545;
-            color: white;
-        }
+        .btn-primary{background:linear-gradient(90deg,var(--accent),#4f46e5)}
+        .btn-secondary{background:#ef4444}
 
-        input[type="submit"]:hover {
-            background: #218838;
-        }
+        .btn i{margin-right:8px}
 
-        input[type="reset"]:hover {
-            background: #c82333;
-        }
+        .login-link {text-align:center;margin-top:14px;color:var(--muted);font-size:13px}
 
-        .login-link {
-            text-align: center;
-            margin-top: 15px;
-        }
+        .login-link a {color:var(--accent);text-decoration:none;font-weight:600}
 
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
-        }
+        @media (max-width:480px){.container{width:92%;padding:20px}}
     </style>
 </head>
 
@@ -107,12 +105,18 @@
         <h2>Registration Form</h2>
 
         <form method="post" action="registration.php">
-            
-            <label>Full Name</label>
-            <input type="text" name="fn" required>
 
-            <label>Age</label>
-            <input type="number" name="age" required>
+            <div class="field">
+                <label>Full Name</label>
+                <i class="fa fa-user icon"></i>
+                <input type="text" name="fn" required>
+            </div>
+
+            <div class="field">
+                <label>Age</label>
+                <i class="fa fa-cake-candles icon"></i>
+                <input type="number" name="age" required>
+            </div>
 
             <label>Sex</label>
             <div class="radio-group">
@@ -120,20 +124,31 @@
                 <label><input type="radio" name="s" value="Female"> Female</label>
             </div>
 
-            <label>Address</label>
-            <input type="text" name="addr" required>
+            <div class="field">
+                <label>Address</label>
+                <i class="fa fa-location-dot icon"></i>
+                <input type="text" name="addr" required>
+            </div>
 
-            <label>Phone Number</label>
-            <input type="tel" name="ph" required inputmode="tel" pattern="[0-9+\- ]{7,15}" placeholder="+1234567890">
+            <div class="field">
+                <label>Phone Number</label>
+                <i class="fa fa-phone icon"></i>
+                <input type="tel" name="ph" required inputmode="tel" pattern="[0-9+\- ]{7,15}" placeholder="+1234567890">
+            </div>
 
-            <label>Email</label>
-            <input type="email" name="em" required>
+            <div class="field">
+                <label>Email</label>
+                <i class="fa fa-envelope icon"></i>
+                <input type="email" name="em" required>
+            </div>
 
-            <input type="submit" name="btnR" value="Register">
-            <input type="reset" value="Clear">
+            <div class="actions">
+                <button type="submit" name="btnR" class="btn btn-primary"><i class="fa fa-user-plus"></i> Register</button>
+                <button type="reset" class="btn btn-secondary"><i class="fa fa-trash"></i> Clear</button>
+            </div>
 
             <div class="login-link">
-                Already registered??? <a href="login.php">Login here</a>
+                Already registered? <a href="login.php">Login here</a>
             </div>
 
         </form>
