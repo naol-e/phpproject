@@ -16,4 +16,4 @@ This is a simple PHP and MySQL project for user registration, login, and data re
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/G3_SE_A.git
+  https://github.com/naol-e/phpproject.git
