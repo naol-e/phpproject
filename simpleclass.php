@@ -15,7 +15,7 @@ class BankAccount
         }
     }
 
-    // 
+    // Withdraw money
     public function withdraw($amount)
     {
         if ($amount > $this->balance) {
