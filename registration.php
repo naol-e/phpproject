@@ -1,3 +1,4 @@
+//registration.php
 <?php
 include('connect.php');
 
