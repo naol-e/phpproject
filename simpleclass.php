@@ -34,8 +34,6 @@ class BankAccount
         return $this->balance;
     }
 }
-
-// Example usage
 $account = new BankAccount();
 
 $account->deposit(100);    // Deposited 100
