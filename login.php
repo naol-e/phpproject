@@ -49,7 +49,7 @@ if (isset($_POST['btnL'])) {
     $un = $_POST['un'];
     $pw = $_POST['pass'];
 
-    // query
+    
     $query = "SELECT User_Name, Password, NO FROM account WHERE 1";
     $execute = mysqli_query($con, $query);
 
