@@ -7,7 +7,7 @@ if (!mysqli_select_db($con, $dbName)) {
 }
 
 mysqli_set_charset($con, 'utf8mb4');
-//new
+
 // Query
 $data = "SELECT * FROM members";
 $result = mysqli_query($con, $data);
